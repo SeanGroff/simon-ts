@@ -6,7 +6,7 @@ export interface StoreState {
   readonly playerWrongButtonPress: boolean;
   readonly startNextRound: boolean;
   readonly currentIndex: number;
-  readonly activeColor: string;
+  readonly activeColor: string | null;
   readonly counter: number;
   readonly lightSequence: number[];
   readonly playerTurn: boolean;
