@@ -1,34 +1,25 @@
-// @flow
+import * as constants from '../actions/constants';
+import * as types from '../types/types';
 import { initialState } from '../index';
-import { StoreState } from '../types/index';
-// import type {
-//   StartGameAction,
-//   ToggleGamePowerAction,
-//   StartNextRoundAction,
-//   RoundSuccessAction,
-// } from '../actions/actionTypes';
-// import {
-//   TOGGLE_GAME_POWER,
-//   START_GAME,
-//   START_NEXT_ROUND,
-// } from '../actions/constants';
 
-// type Action =
-//   | StartGameAction
-//   | ToggleGamePowerAction
-//   | StartNextRoundAction
+type Action =
+  | types.StartGameAction
+  | types.ToggleGamePowerAction
+  | types.StartNextRoundAction;
 //   | RoundSuccessAction;
 
-export default (gameState: StoreState = initialState, action) => {
+type StoreState = types.StoreState;
+
+export default (gameState: StoreState = initialState, action: Action) => {
   switch (action.type) {
-    case TOGGLE_GAME_POWER:
+    case constants.TOGGLE_GAME_POWER:
       if (action.payload) {
         return { ...gameState, power: action.payload };
       }
       return { ...initialState };
-    case START_GAME:
+    case constants.START_GAME:
       return { ...gameState, gameStarted: true };
-    case START_NEXT_ROUND:
+    case constants.START_NEXT_ROUND:
       return {
         ...gameState,
         counter: gameState.counter + 1,
