@@ -5,10 +5,13 @@ interface Props {
   startButton: boolean;
   disabled: number | boolean;
   power: boolean;
-  startGame(): { type: string };
+  startGame?(): { type: string };
+  onClick?(): void;
 }
 
-const StyledButton = styled.button`
+const Button: React.StatelessComponent<Props> = props => <button />;
+
+const StyledButton = styled(Button)`
   border-radius: 100%;
   width: 20px;
   height: 20px;
@@ -32,7 +35,7 @@ const StyledButton = styled.button`
 
 const StartStrictButton = (props: Props) => {
   const clickHandler = () => {
-    if (props.startButton) {
+    if (props.startButton && props.startGame !== undefined) {
       props.startGame();
     } else {
       /**

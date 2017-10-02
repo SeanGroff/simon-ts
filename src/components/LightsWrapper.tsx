@@ -86,7 +86,7 @@ export default class Lights extends React.Component<Props, State> {
     // }
   }
 
-  clickHandler(id) {
+  clickHandler(id: number) {
     console.log('click');
     // this.lightUp(id);
     // const lightSeq = this.props.lightSequence;

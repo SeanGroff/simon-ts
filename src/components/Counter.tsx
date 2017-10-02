@@ -15,15 +15,9 @@ const StyledCounter = styled.div`
   font-size: 32px;
   border-radius: 10px;
   width: 50px;
-  color: ${(props: Props) => (props.on ? '#DC0D29' : '#430710')};
+  color: ${on => (on ? '#DC0D29' : '#430710')};
 `;
 
-const Counter = (props: Props) => (
-  <StyledCounter {...props}>{props.count || '--'}</StyledCounter>
+export default ({ count = 0, on }: Props) => (
+  <StyledCounter {...on}>{count || '--'}</StyledCounter>
 );
-
-Counter.defaultProps = {
-  count: 0,
-};
-
-export default Counter;

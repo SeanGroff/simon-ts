@@ -11,7 +11,10 @@ interface Props {
   topRight?: boolean;
   bottomLeft?: boolean;
   bottomRight?: boolean;
+  onClick(): void;
 }
+
+const Light: React.StatelessComponent<Props> = props => <div />;
 
 const LightUp = (props: Props) => keyframes`
   0% {
@@ -25,31 +28,27 @@ const LightUp = (props: Props) => keyframes`
   }
 `;
 
-const StyledLight = styled.div`
+const StyledLight = styled(Light)`
   display: inline-block;
   width: 200px;
   height: 200px;
-  background-color: ${(props: Props) => props.color};
+  background-color: ${props => props.color};
   border: 12px solid #333333;
-  border-top-left-radius: ${(props: Props) => (props.topLeft ? '100%' : '0')};
-  border-top-right-radius: ${(props: Props) => (props.topRight ? '100%' : '0')};
-  border-bottom-left-radius: ${(props: Props) =>
-    props.bottomLeft ? '100%' : '0'};
-  border-bottom-right-radius: ${(props: Props) =>
-    props.bottomRight ? '100%' : '0'};
-  pointer-events: ${(props: Props) => (props.clickable ? 'auto' : 'none')};
-  animation: ${(props: Props) =>
+  border-top-left-radius: ${props => (props.topLeft ? '100%' : '0')};
+  border-top-right-radius: ${props => (props.topRight ? '100%' : '0')};
+  border-bottom-left-radius: ${props => (props.bottomLeft ? '100%' : '0')};
+  border-bottom-right-radius: ${props => (props.bottomRight ? '100%' : '0')};
+  pointer-events: ${props => (props.clickable ? 'auto' : 'none')};
+  animation: ${props =>
     props.animate ? `${LightUp(props)} 1500ms linear` : 'none'};
   :hover {
-    cursor: ${(props: Props) => (props.clickable ? 'pointer' : 'initial')};
+    cursor: ${props => (props.clickable ? 'pointer' : 'initial')};
   }
 `;
 
-const Light = (props: Props) => <StyledLight {...props} />;
+export default (props: Props) => <StyledLight {...props} />;
 
-Light.defaultProps = {
-  animate: false,
-  clickable: false,
-};
-
-export default Light;
+// Light.defaultProps = {
+//   animate: false,
+//   clickable: false,
+// };

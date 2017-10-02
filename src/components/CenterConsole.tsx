@@ -13,7 +13,7 @@ interface Props {
   counter: number;
 }
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   position: absolute;
   border-radius: 100%;
   top: 50%;
@@ -68,7 +68,7 @@ const ButtonWrapper = styled.span`
   margin: 5px;
 `;
 
-const Label = styled.label`
+const StyledLabel = styled.label`
   font-size: 14px;
   color: #222222;
   margin: ${(props: Props) => (props.hasMargin ? 'auto 5px 0 5px' : '0')};
@@ -78,18 +78,18 @@ const Label = styled.label`
 `;
 
 export default (props: Props) => (
-  <Wrapper>
+  <StyledWrapper>
     <TopHalf>
       <Header>{'simon'}</Header>
     </TopHalf>
     <BottomHalf>
       <ButtonsRow>
         <ButtonWrapper>
-          <Label hasPadding>{'count'}</Label>
+          <StyledLabel hasPadding>{'count'}</StyledLabel>
           <Counter count={props.counter} on={props.power} />
         </ButtonWrapper>
         <ButtonWrapper>
-          <Label hasPadding>{'start'}</Label>
+          <StyledLabel hasPadding>{'start'}</StyledLabel>
           <StartStrictButton
             startButton
             disabled={!props.power || props.counter}
@@ -98,7 +98,7 @@ export default (props: Props) => (
           />
         </ButtonWrapper>
         <ButtonWrapper>
-          <Label hasPadding>{'strict'}</Label>
+          <StyledLabel hasPadding>{'strict'}</StyledLabel>
           <StartStrictButton
             startButton={false}
             disabled={!props.power}
@@ -107,13 +107,13 @@ export default (props: Props) => (
         </ButtonWrapper>
       </ButtonsRow>
       <ButtonsRow>
-        <Label hasMargin>{'off'}</Label>
+        <StyledLabel hasMargin>{'off'}</StyledLabel>
         <OnOffSwitch
           power={props.power}
           powerOnOff={props.toggleGamePowerAction}
         />
-        <Label hasMargin>{'on'}</Label>
+        <StyledLabel hasMargin>{'on'}</StyledLabel>
       </ButtonsRow>
     </BottomHalf>
-  </Wrapper>
+  </StyledWrapper>
 );
