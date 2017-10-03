@@ -132,7 +132,6 @@ export default class Lights extends React.Component<Props, State> {
       <LightsWrapper>
         <LightsRow>
           <Light
-            id={0}
             animate={lightOn === 0}
             topLeft={true}
             clickable={this.props.playerTurn}
@@ -141,7 +140,6 @@ export default class Lights extends React.Component<Props, State> {
             onClick={() => this.clickHandler(0)}
           />
           <Light
-            id={1}
             animate={lightOn === 1}
             topRight={true}
             clickable={this.props.playerTurn}
@@ -152,7 +150,6 @@ export default class Lights extends React.Component<Props, State> {
         </LightsRow>
         <LightsRow>
           <Light
-            id={2}
             animate={lightOn === 2}
             bottomLeft={true}
             clickable={this.props.playerTurn}
@@ -161,7 +158,6 @@ export default class Lights extends React.Component<Props, State> {
             onClick={() => this.clickHandler(2)}
           />
           <Light
-            id={3}
             animate={lightOn === 3}
             bottomRight={true}
             clickable={this.props.playerTurn}

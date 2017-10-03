@@ -1,8 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes, StyledProps } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 interface Props {
-  id: number;
   animate: boolean;
   color: string;
   lightUpColor: string;
@@ -11,6 +10,7 @@ interface Props {
   topRight?: boolean;
   bottomLeft?: boolean;
   bottomRight?: boolean;
+  className?: string;
   onClick(): void;
 }
 
@@ -19,10 +19,9 @@ interface LightUpProps {
   lightUpColor: string;
 }
 
-const Light: React.StatelessComponent<Props> = props => {
-  console.log(props);
-  return <div />;
-};
+const Light: React.StatelessComponent<Props> = props => (
+  <div className={props.className} />
+);
 
 const LightUp = (props: LightUpProps) => keyframes`
   0% {
@@ -40,23 +39,19 @@ const StyledLight = styled(Light)`
   display: inline-block;
   width: 200px;
   height: 200px;
-  background-color: ${(props: StyledProps<Props>) => props.color};
+  background-color: ${(props: Props) => props.color};
   border: 12px solid #333333;
-  border-top-left-radius: ${(props: StyledProps<Props>) =>
-    props.topLeft ? '100%' : '0'};
-  border-top-right-radius: ${(props: StyledProps<Props>) =>
-    props.topRight ? '100%' : '0'};
-  border-bottom-left-radius: ${(props: StyledProps<Props>) =>
+  border-top-left-radius: ${(props: Props) => (props.topLeft ? '100%' : '0')};
+  border-top-right-radius: ${(props: Props) => (props.topRight ? '100%' : '0')};
+  border-bottom-left-radius: ${(props: Props) =>
     props.bottomLeft ? '100%' : '0'};
-  border-bottom-right-radius: ${(props: StyledProps<Props>) =>
+  border-bottom-right-radius: ${(props: Props) =>
     props.bottomRight ? '100%' : '0'};
-  pointer-events: ${(props: StyledProps<Props>) =>
-    props.clickable ? 'auto' : 'none'};
-  animation: ${(props: StyledProps<Props>) =>
+  pointer-events: ${(props: Props) => (props.clickable ? 'auto' : 'none')};
+  animation: ${(props: Props) =>
     props.animate ? `${LightUp(props)} 1500ms linear` : 'none'};
   :hover {
-    cursor: ${(props: StyledProps<Props>) =>
-      props.clickable ? 'pointer' : 'initial'};
+    cursor: ${(props: Props) => (props.clickable ? 'pointer' : 'initial')};
   }
 `;
 
