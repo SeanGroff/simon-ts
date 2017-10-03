@@ -2,8 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  powerOnOff(power: boolean): { type: string; payload: boolean };
   power: boolean;
+  powerOnOff(power: boolean): { type: string; payload: boolean };
 }
 
 const StyledSwitch = styled.div`

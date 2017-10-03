@@ -8,36 +8,20 @@ import { startNextRoundAction } from '../actions/startNextRoundAction';
 // import { roundSuccessThunk } from '../actions/roundSuccessAction';
 import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
-import * as types from '../types/types';
-
-interface StateFromProps {
-  power: boolean;
-  counter: number;
-  lightSequence: number[];
-  playerTurn: boolean;
-}
-
-interface DispatchFromProps {
-  startGameAction: { type: boolean };
-  startNextRoundAction: { type: boolean };
-}
+import { StoreState } from '../types/types';
 
 interface Props {
-  toggleGamePowerAction(payload: boolean): { type: string; payload: boolean };
-  startGameAction(): { type: string };
-  roundSuccessThunk(): any;
-  startNextRoundAction(): { type: string };
   power: boolean;
   counter: number;
   lightSequence: number[];
   playerTurn: boolean;
+  toggleGamePowerAction(payload: boolean): { type: string; payload: boolean };
+  startGameAction(): { type: string };
+  // roundSuccessThunk(): any;
+  startNextRoundAction(): { type: string };
 }
 
-const Container: React.StatelessComponent<Props> = props => (
-  <div>{props.children}</div>
-);
-
-const SimonContainer = styled(Container)`
+const SimonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,14 +33,14 @@ const SimonContainer = styled(Container)`
   position: relative;
 `;
 
-const mapStateToProps = (state: types.StoreState) => ({
+const mapStateToProps = (state: StoreState) => ({
   power: state.power,
   counter: state.counter,
   lightSequence: state.lightSequence,
   playerTurn: state.playerTurn,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
+const mapDispatchToProps = (dispatch: Dispatch<StoreState>) =>
   bindActionCreators(
     {
       toggleGamePowerAction,

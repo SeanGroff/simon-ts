@@ -7,10 +7,15 @@ import OnOffSwitch from './OnOffSwitch';
 interface Props {
   hasMargin?: boolean;
   hasPadding?: boolean;
-  toggleGamePowerAction(power: boolean): { type: string; payload: boolean };
-  startGameAction(): { type: string };
   power: boolean;
   counter: number;
+  toggleGamePowerAction(power: boolean): { type: string; payload: boolean };
+  startGameAction(): { type: string };
+}
+
+interface LabelProps {
+  hasMargin?: boolean;
+  hasPadding?: boolean;
 }
 
 const StyledWrapper = styled.div`
@@ -71,8 +76,9 @@ const ButtonWrapper = styled.span`
 const StyledLabel = styled.label`
   font-size: 14px;
   color: #222222;
-  margin: ${(props: Props) => (props.hasMargin ? 'auto 5px 0 5px' : '0')};
-  padding: ${(props: Props) => (props.hasPadding ? '0 0 5px 0' : '0')};
+  margin: ${({ hasMargin }: LabelProps) =>
+    hasMargin ? 'auto 5px 0 5px' : '0'};
+  padding: ${({ hasPadding }: LabelProps) => (hasPadding ? '0 0 5px 0' : '0')};
   text-transform: capitalize;
   text-align: center;
 `;
@@ -85,20 +91,20 @@ export default (props: Props) => (
     <BottomHalf>
       <ButtonsRow>
         <ButtonWrapper>
-          <StyledLabel hasPadding>{'count'}</StyledLabel>
+          <StyledLabel hasPadding={true}>{'count'}</StyledLabel>
           <Counter count={props.counter} on={props.power} />
         </ButtonWrapper>
         <ButtonWrapper>
-          <StyledLabel hasPadding>{'start'}</StyledLabel>
+          <StyledLabel hasPadding={true}>{'start'}</StyledLabel>
           <StartStrictButton
-            startButton
-            disabled={!props.power || props.counter}
+            startButton={true}
+            disabled={!props.power || props.counter ? true : false}
             power={props.power}
             startGame={props.startGameAction}
           />
         </ButtonWrapper>
         <ButtonWrapper>
-          <StyledLabel hasPadding>{'strict'}</StyledLabel>
+          <StyledLabel hasPadding={true}>{'strict'}</StyledLabel>
           <StartStrictButton
             startButton={false}
             disabled={!props.power}
@@ -107,12 +113,12 @@ export default (props: Props) => (
         </ButtonWrapper>
       </ButtonsRow>
       <ButtonsRow>
-        <StyledLabel hasMargin>{'off'}</StyledLabel>
+        <StyledLabel hasMargin={true}>{'off'}</StyledLabel>
         <OnOffSwitch
           power={props.power}
           powerOnOff={props.toggleGamePowerAction}
         />
-        <StyledLabel hasMargin>{'on'}</StyledLabel>
+        <StyledLabel hasMargin={true}>{'on'}</StyledLabel>
       </ButtonsRow>
     </BottomHalf>
   </StyledWrapper>

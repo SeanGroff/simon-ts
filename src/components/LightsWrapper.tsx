@@ -4,14 +4,14 @@ import Light from './Light';
 // import { getSequenceOfRandomNumbers, playSequence } from '../utils/logic';
 
 interface Props {
-  toggleGamePowerAction(payload: boolean): { type: string; payload: boolean };
-  startGameAction(): { type: string };
-  roundSuccessThunk(): any;
-  nextTurnThunk(): any;
   power: boolean;
   counter: number;
   lightSequence: number[];
   playerTurn: boolean;
+  toggleGamePowerAction(payload: boolean): { type: string; payload: boolean };
+  startGameAction(): { type: string };
+  // roundSuccessThunk(): any;
+  // nextTurnThunk(): any;
 }
 
 interface State {
@@ -25,13 +25,6 @@ const LightsWrapper = styled.div`position: relative;`;
 const LightsRow = styled.div`margin-bottom: -4px;`;
 
 export default class Lights extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.clickHandler = this.clickHandler.bind(this);
-    this.toggleClickable = this.toggleClickable.bind(this);
-    this.playSequence = this.playSequence.bind(this);
-  }
-
   /**
    * @todo change lightOn to lightSequence
    *
@@ -42,6 +35,13 @@ export default class Lights extends React.Component<Props, State> {
     clickable: false,
     lightOn: 100,
   };
+
+  constructor(props: Props) {
+    super(props);
+    this.clickHandler = this.clickHandler.bind(this);
+    this.toggleClickable = this.toggleClickable.bind(this);
+    this.playSequence = this.playSequence.bind(this);
+  }
 
   /**
    * @todo When the component mounts GET an Array of random numbers
@@ -87,13 +87,11 @@ export default class Lights extends React.Component<Props, State> {
   }
 
   clickHandler(id: number) {
-    console.log('click');
     // this.lightUp(id);
     // const lightSeq = this.props.lightSequence;
     // this.setState((prevState, props) => ({
     //   lightOn: id,
     // }));
-
     // if (lightSeq && lightSeq.length) {
     //   const results = lightSeq.filter(light => light === id);
     //   if (results && results.length === lightSeq.length) {
@@ -136,7 +134,7 @@ export default class Lights extends React.Component<Props, State> {
           <Light
             id={0}
             animate={lightOn === 0}
-            topLeft
+            topLeft={true}
             clickable={this.props.playerTurn}
             color="#00A74A"
             lightUpColor="#13ff7c"
@@ -145,7 +143,7 @@ export default class Lights extends React.Component<Props, State> {
           <Light
             id={1}
             animate={lightOn === 1}
-            topRight
+            topRight={true}
             clickable={this.props.playerTurn}
             color="#9F0F17"
             lightUpColor="#ff4c4c"
@@ -156,7 +154,7 @@ export default class Lights extends React.Component<Props, State> {
           <Light
             id={2}
             animate={lightOn === 2}
-            bottomLeft
+            bottomLeft={true}
             clickable={this.props.playerTurn}
             color="#CCA707"
             lightUpColor="#fed93f"
@@ -165,7 +163,7 @@ export default class Lights extends React.Component<Props, State> {
           <Light
             id={3}
             animate={lightOn === 3}
-            bottomRight
+            bottomRight={true}
             clickable={this.props.playerTurn}
             color="#094A8F"
             lightUpColor="#1c8cff"

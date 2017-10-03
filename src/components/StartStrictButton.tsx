@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 interface Props {
   startButton: boolean;
-  disabled: number | boolean;
+  disabled: boolean;
   power: boolean;
   startGame?(): { type: string };
   onClick?(): void;
 }
 
-const Button: React.StatelessComponent<Props> = props => <button />;
+// const Button: React.StatelessComponent<Props> = props => <button />;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.button`
   border-radius: 100%;
   width: 20px;
   height: 20px;

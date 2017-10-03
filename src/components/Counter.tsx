@@ -6,6 +6,10 @@ interface Props {
   count: number;
 }
 
+interface CounterProps {
+  on: boolean;
+}
+
 const StyledCounter = styled.div`
   display: flex;
   justify-content: center;
@@ -15,9 +19,9 @@ const StyledCounter = styled.div`
   font-size: 32px;
   border-radius: 10px;
   width: 50px;
-  color: ${on => (on ? '#DC0D29' : '#430710')};
+  color: ${({ on }: CounterProps) => (on ? '#DC0D29' : '#430710')};
 `;
 
 export default ({ count = 0, on }: Props) => (
-  <StyledCounter {...on}>{count || '--'}</StyledCounter>
+  <StyledCounter on={true}>{count || '--'}</StyledCounter>
 );
