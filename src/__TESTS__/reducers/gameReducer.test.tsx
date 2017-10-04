@@ -35,10 +35,11 @@ describe('Game reducer', () => {
 
   it('should handle START_GAME action', () => {
     const mockState = initialState;
-    const action: Action = { type: START_GAME };
+    const action: Action = { type: START_GAME, payload: [0, 1, 2, 3] };
     expect(reducer(mockState, action)).toEqual({
       ...mockState,
       gameStarted: true,
+      lightSequence: action.payload,
     });
   });
 

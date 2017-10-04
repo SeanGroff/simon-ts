@@ -18,7 +18,7 @@ export default (gameState: StoreState = initialState, action: Action) => {
       }
       return { ...initialState };
     case constants.START_GAME:
-      return { ...gameState, gameStarted: true };
+      return { ...gameState, gameStarted: true, lightSequence: action.payload };
     case constants.START_NEXT_ROUND:
       return {
         ...gameState,

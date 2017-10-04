@@ -16,6 +16,7 @@ export interface StoreState {
 }
 export interface StartGameAction {
   type: constants.START_GAME;
+  payload: number[];
 }
 
 export interface ToggleGamePowerAction {
@@ -27,9 +28,9 @@ export interface StartNextRoundAction {
   type: constants.START_NEXT_ROUND;
 }
 
-export interface RoundSuccessAction {
-  type: constants.ROUND_SUCCESS;
-  payload: number;
-}
+// export interface RoundSuccessAction {
+//   type: constants.ROUND_SUCCESS;
+//   payload: number;
+// }
 
 export type Thunk = ThunkAction<void, StoreState, void>;

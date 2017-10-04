@@ -9,3 +9,6 @@ export type START_NEXT_ROUND = typeof START_NEXT_ROUND;
 
 export const ROUND_SUCCESS = 'ROUND_SUCCESS';
 export type ROUND_SUCCESS = typeof ROUND_SUCCESS;
+
+export const SET_LIGHT_SEQUENCE = 'SET_LIGHT_SEQUENCE';
+export type SET_LIGHT_SEQUENCE = typeof SET_LIGHT_SEQUENCE;
