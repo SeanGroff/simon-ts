@@ -1,6 +1,6 @@
 import * as constants from '../actions/constants';
 import * as types from '../types/types';
-import { initialState } from '../index';
+import { initialState } from '../Store';
 
 type Action =
   | types.StartGameAction
