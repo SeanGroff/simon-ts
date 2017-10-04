@@ -1,29 +1,21 @@
+import { Dispatch } from 'redux';
 import * as constants from './constants';
 import * as types from '../types/types';
-// import { nextTurnAction } from './nextTurnAction';
-// import { getRandomNumber } from '../utils/logic';
+import { startNextRoundAction as startNextRound } from './startNextRoundAction';
 
-type Action = types.StartGameAction;
-
-export const startGameAction = (): Action => ({
+export const startGameAction = (): types.StartGameAction => ({
   type: constants.START_GAME,
 });
-
-// type Args = {
-//   playerTurn: number,
-//   counter: number,
-// };
 
 /**
  * @todo Finish startGameThunk (See comments)
  */
-// export function startGameThunk() {
-//   return (dispatch: *, getState: *) => {
-//     const { playerTurn, counter }: Args = getState();
+export function startGameThunk(): types.Thunk {
+  return (dispatch: Dispatch<types.StoreState>) => {
+    // const { playerTurn, counter }: Args = getState();
 
-//     dispatch(startGameAction());
-//     dispatch(startNextRound()) // counter++, playerTurn = false
-//      dispatch(lightSequence()) // each interval setState to color, playerTurn = true
-//
-//   };
-// }
+    dispatch(startGameAction());
+    dispatch(startNextRound());
+    //  dispatch(lightSequence()) // each interval setState to color, playerTurn = true
+  };
+}

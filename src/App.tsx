@@ -11,8 +11,8 @@ const App = styled.div`
   background: DodgerBlue;
 `;
 
-export default (props: {}) => (
+export default () => (
   <App>
-    <Simon {...props} />
+    <Simon />
   </App>
 );

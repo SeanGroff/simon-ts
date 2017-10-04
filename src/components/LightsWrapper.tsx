@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Light from './Light';
+import { Thunk } from '../types/types';
 // import { getSequenceOfRandomNumbers, playSequence } from '../utils/logic';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
   lightSequence: number[];
   playerTurn: boolean;
   toggleGamePowerAction(payload: boolean): { type: string; payload: boolean };
-  startGameAction(): { type: string };
+  startGameThunk(): Thunk;
   // roundSuccessThunk(): any;
   // nextTurnThunk(): any;
 }

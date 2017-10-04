@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { toggleGamePowerAction } from '../actions/toggleGamePowerAction';
-import { startGameAction } from '../actions/startGameAction';
+import { startGameThunk } from '../actions/startGameAction';
 import { startNextRoundAction } from '../actions/startNextRoundAction';
 // import { roundSuccessThunk } from '../actions/roundSuccessAction';
 import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
-import { StoreState } from '../types/types';
+import { StoreState, Thunk } from '../types/types';
 
 interface Props {
   power: boolean;
@@ -16,7 +16,7 @@ interface Props {
   lightSequence: number[];
   playerTurn: boolean;
   toggleGamePowerAction(payload: boolean): { type: string; payload: boolean };
-  startGameAction(): { type: string };
+  startGameThunk(): Thunk;
   // roundSuccessThunk(): any;
   startNextRoundAction(): { type: string };
 }
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch: Dispatch<StoreState>) =>
   bindActionCreators(
     {
       toggleGamePowerAction,
-      startGameAction,
+      startGameThunk,
       // roundSuccessThunk,
       startNextRoundAction,
     },
@@ -53,8 +53,20 @@ const mapDispatchToProps = (dispatch: Dispatch<StoreState>) =>
 
 export const Simon = (props: Props) => (
   <SimonContainer>
-    <LightsWrapper {...props} />
-    <CenterConsole {...props} />
+    <LightsWrapper
+      power={props.power}
+      counter={props.counter}
+      lightSequence={props.lightSequence}
+      playerTurn={props.playerTurn}
+      toggleGamePowerAction={props.toggleGamePowerAction}
+      startGameThunk={props.startGameThunk}
+    />
+    <CenterConsole
+      power={props.power}
+      counter={props.counter}
+      toggleGamePowerAction={props.toggleGamePowerAction}
+      startGameThunk={props.startGameThunk}
+    />
   </SimonContainer>
 );
 

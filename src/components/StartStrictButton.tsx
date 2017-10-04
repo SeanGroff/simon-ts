@@ -1,15 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Thunk } from '../types/types';
 
 interface Props {
   startButton: boolean;
   disabled: boolean;
   power: boolean;
-  startGame?(): { type: string };
+  startGame?(): Thunk;
   onClick?(): void;
 }
-
-// const Button: React.StatelessComponent<Props> = props => <button />;
 
 const StyledButton = styled.button`
   border-radius: 100%;

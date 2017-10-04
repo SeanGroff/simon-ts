@@ -5,11 +5,11 @@ global.requestAnimationFrame = callback => {
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import App from '../App';
+import Light from '../../components/Light';
 
 configure({ adapter: new Adapter() });
 
-it('renders without crashing', () => {
-  const component = shallow(<App />);
+it('should render a Light with a green background', () => {
+  const component = shallow(<Light color="green" />);
   expect(component).toMatchSnapshot();
 });

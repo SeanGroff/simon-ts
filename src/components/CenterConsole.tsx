@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import Counter from './Counter';
 import StartStrictButton from './StartStrictButton';
 import OnOffSwitch from './OnOffSwitch';
+import { Thunk } from '../types/types';
 
-interface Props {
-  hasMargin?: boolean;
-  hasPadding?: boolean;
+export interface Props {
   power: boolean;
   counter: number;
   toggleGamePowerAction(power: boolean): { type: string; payload: boolean };
-  startGameAction(): { type: string };
+  startGameThunk(): Thunk;
 }
 
 interface LabelProps {
@@ -100,7 +99,7 @@ export default (props: Props) => (
             startButton={true}
             disabled={!props.power || props.counter ? true : false}
             power={props.power}
-            startGame={props.startGameAction}
+            startGame={props.startGameThunk}
           />
         </ButtonWrapper>
         <ButtonWrapper>

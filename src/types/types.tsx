@@ -1,3 +1,4 @@
+import { ThunkAction } from 'redux-thunk';
 import * as constants from '../actions/constants';
 
 export interface StoreState {
@@ -30,3 +31,5 @@ export interface RoundSuccessAction {
   type: constants.ROUND_SUCCESS;
   payload: number;
 }
+
+export type Thunk = ThunkAction<void, StoreState, void>;
